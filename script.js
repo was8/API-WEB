@@ -52,6 +52,31 @@ document.addEventListener('DOMContentLoaded', function() {
         loadPosts();
     };
 
+    // Função para buscar múltiplos dados da API e adicionar ao contêiner de posts
+    function fetchData() {
+        fetch('https://jsonplaceholder.typicode.com/posts')
+            .then((response) => response.json())
+            .then((json) => {
+                const posts = json.slice(0, 5); // Limitar a 5 posts
+                posts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.className = 'post';
+                    postElement.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <p>${post.body}</p>
+                        <img src="https://picsum.photos/200/100?random=${post.id}" alt="Random Image">
+                        <button onclick="deleteApiPost(${post.id})">Deletar</button>
+                    `;
+                    postElement.querySelector('button').addEventListener('click', function() {
+                        postElement.remove();
+                    });
+                    postsContainer.appendChild(postElement);
+                });
+            })
+            .catch((error) => console.error('Erro:', error));
+    }
+
     // Carregar posts ao carregar a página
     loadPosts();
+    fetchData();
 });

@@ -15,6 +15,8 @@ Este projeto tem como objetivo criar uma aplicação web que consome uma API pú
 ## Créditos
 - [JSONPlaceholder](https://jsonplaceholder.typicode.com/) - API pública utilizada para fornecer dados fictícios.
 - [Picsum Photos](https://picsum.photos/) - API utilizada para fornecer imagens aleatórias.
+- https://www.youtube.com/watch?v=RDqevtTeN10 - Video do Youtube
+- https://www.youtube.com/watch?v=LI-8Zwsl5Tc&t=1029s - Video do Youtube
 
 ## Licença
-Este projeto está licenciado 
+Projeto de uso livre com fins educativos 

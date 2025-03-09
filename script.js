@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const postsContainer = document.getElementById('posts');
     const addPostButton = document.getElementById('addPost');
+    const postTitleInput = document.getElementById('postTitle');
+    const postBodyInput = document.getElementById('postBody');
 
     // Função para carregar posts
     function loadPosts() {
@@ -25,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para adicionar um novo post
     addPostButton.addEventListener('click', function() {
         const newPost = {
-            title: 'Novo Post',
-            body: 'Este é um novo post adicionado via JavaScript.',
+            title: postTitleInput.value,
+            body: postBodyInput.value,
             userId: 1
         };
 

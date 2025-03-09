@@ -17,4 +17,4 @@ Este projeto tem como objetivo criar uma aplicação web que consome uma API pú
 - [Picsum Photos](https://picsum.photos/) - API utilizada para fornecer imagens aleatórias.
 
 ## Licença
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto está licenciado 

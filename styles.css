@@ -18,7 +18,7 @@ body {
     height: auto;
 }
 
-/* Estilos para as caixas de texto e botão */
+
 input[type="text"], textarea {
     width: 100%;
     padding: 10px;

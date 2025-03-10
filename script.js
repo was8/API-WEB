@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const postTitleInput = document.getElementById('postTitle');
     const postBodyInput = document.getElementById('postBody');
 
-    // Função para carregar posts do localStorage
     function loadPosts() {
         const posts = JSON.parse(localStorage.getItem('posts')) || [];
         postsContainer.innerHTML = '';
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Função para adicionar um novo post ao localStorage
     addPostButton.addEventListener('click', function() {
         const title = postTitleInput.value.trim();
         const body = postBodyInput.value.trim();
@@ -39,25 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         posts.push(newPost);
         localStorage.setItem('posts', JSON.stringify(posts));
-        alert('Post adicionado com sucesso!');
+        alert('Post adicionado com sucesso! Atualize a página para ver todos os posts.');
         loadPosts();
     });
 
-    // Função para deletar um post do localStorage
     window.deletePost = function(postId) {
         let posts = JSON.parse(localStorage.getItem('posts')) || [];
         posts = posts.filter(post => post.id !== postId);
         localStorage.setItem('posts', JSON.stringify(posts));
-        alert('Post deletado com sucesso!');
+        alert('Post deletado com sucesso! Atualize a página para ver as mudanças.');
         loadPosts();
     };
 
-    // Função para buscar múltiplos dados da API e adicionar ao contêiner de posts
     function fetchData() {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then((response) => response.json())
             .then((json) => {
-                const posts = json.slice(0, 5); // Limitar a 5 posts
+                const posts = json.slice(0, 10); 
                 posts.forEach(post => {
                     const postElement = document.createElement('div');
                     postElement.className = 'post';
@@ -76,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch((error) => console.error('Erro:', error));
     }
 
-    // Carregar posts ao carregar a página
     loadPosts();
     fetchData();
 });

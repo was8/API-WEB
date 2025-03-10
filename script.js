@@ -29,24 +29,41 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        const posts = JSON.parse(localStorage.getItem('posts')) || [];
         const newPost = {
-            id: Date.now(),
             title: title,
             body: body
         };
-        posts.push(newPost);
-        localStorage.setItem('posts', JSON.stringify(posts));
-        alert('Post adicionado com sucesso! Atualize a página para ver todos os posts.');
-        loadPosts();
+
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPost)
+        })
+        .then(response => response.json())
+        .then(post => {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            alert('Post adicionado com sucesso! Atualize a página para ver todos os posts.');
+            loadPosts();
+        })
+        .catch(error => console.error('Erro:', error));
     });
 
     window.deletePost = function(postId) {
-        let posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts = posts.filter(post => post.id !== postId);
-        localStorage.setItem('posts', JSON.stringify(posts));
-        alert('Post deletado com sucesso! Atualize a página para ver as mudanças.');
-        loadPosts();
+        fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
+            method: 'DELETE'
+        })
+        .then(() => {
+            let posts = JSON.parse(localStorage.getItem('posts')) || [];
+            posts = posts.filter(post => post.id !== postId);
+            localStorage.setItem('posts', JSON.stringify(posts));
+            alert('Post deletado com sucesso! Atualize a página para ver as mudanças.');
+            loadPosts();
+        })
+        .catch(error => console.error('Erro:', error));
     };
 
     function fetchData() {

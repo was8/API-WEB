@@ -19,4 +19,4 @@ Este projeto tem como objetivo criar uma aplicação web que consome uma API pú
 - https://www.youtube.com/watch?v=LI-8Zwsl5Tc&t=1029s - Video do Youtube
 
 ## Licença
-Projeto de uso livre com fins educativos 
+Projeto de uso livre com fins educativos feito para displina de web  
